@@ -58,26 +58,32 @@ class Logger {
     static log(filename, level, message) {
         const dirPath = options.logsFolder
         const file = path.resolve(dirPath, filename)
+
+        const date = moment().tz('Europe/Berlin').format("DD-MM-YYYY HH:mm:ss")
+        let levelStr = 'UNKNOWN_LEVEL'
+        if (typeof level === 'string') {
+            levelStr = level
+        } else if (typeof level === 'number') {
+            levelStr = levels[level]
+        }
+        const msg = `[${date}] - ${levelStr} - ${message} \n`
+
+        if (options.heroku_logs) {
+            console.log(msg.replace('\n', ''))
+            return Logger
+        }
+
         if (!fs.existsSync(dirPath)) {
             fs.mkdirSync(dirPath, { recursive: true })
         }
         if (fs.existsSync(file)) {
-            if (path.extname(file) === `.${extension}`) {
-                const date = moment().tz('Europe/Berlin').format("DD-MM-YYYY HH:mm:ss")
-                let levelStr = 'UNKNOWN_LEVEL'
-                if (typeof level === 'string') {
-                    levelStr = level
-                } else if (typeof level === 'number') {
-                    levelStr = levels[level]
-                }
-                const msg = `[${date}] - ${levelStr} - ${message} \n`
-                if (options.heroku_logs) console.log(msg.replace('\n', ''))
+            if (path.extname(file) === `.${options.extension}`) {
                 fs.appendFile(file, msg, err => handdleWriteError(err))
             } else {
                 throw `Logger error : file ${file} extension is not .log`
             }
         } else {
-            fs.writeFile(file, message, err => handdleWriteError(err))
+            fs.writeFile(file, msg, err => handdleWriteError(err))
         }
         return Logger // to chain methods
     }
