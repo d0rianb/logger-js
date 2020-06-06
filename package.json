@@ -1,11 +1,11 @@
 {
-    "name": "simple-logger",
+    "name": "@dorianb/logger-js",
     "version": "0.3.0",
     "description": "A simple logger library for JS and NodeJS",
     "main": "src/main.js",
     "scripts": {
-        "test": "echo \"Error: no test specified\" && exit 1",
-        "dev": "nodemon ."
+        "test": "node test/test.js",
+        "dev": "node src/main.js"
     },
     "repository": {
         "type": "git",
@@ -27,5 +27,8 @@
     "homepage": "https://github.com/d0rianb/logger-lib#readme",
     "devDependencies": {
         "nodemon": "^2.0.4"
+    },
+    "dependencies": {
+        "moment-timezone": "^0.5.31"
     }
 }

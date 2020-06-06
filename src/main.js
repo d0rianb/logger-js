@@ -19,9 +19,11 @@ const levels = {
     4: 'FATAL'
 }
 
+
 const options = {
     logFile: 'logs.log',
     logsFolder: path.resolve(__dirname, '../logs/'),
+    extension: 'log',
     timezone: 'Europe/Berlin', // Not implemented yet
     heroku_logs: false,
     showPID: false, // Not implemented yet
@@ -46,7 +48,7 @@ class Logger {
 
 
     /**
-     * @static log - Write a line in the log file
+     * @static log - Write a new line in the log file
      *
      * @param  {string} filename file where the log is written
      * @param  {number|string} level    level of the log
@@ -54,9 +56,13 @@ class Logger {
      * @return {Logger}          Return the logger to chain methods
      */
     static log(filename, level, message) {
-        const file = path.resolve(options.logsFolder, filename)
+        const dirPath = options.logsFolder
+        const file = path.resolve(dirPath, filename)
+        if (!fs.existsSync(dirPath)) {
+            fs.mkdirSync(dirPath, { recursive: true })
+        }
         if (fs.existsSync(file)) {
-            if (path.extname(file) === '.log') {
+            if (path.extname(file) === `.${extension}`) {
                 const date = moment().tz('Europe/Berlin').format("DD-MM-YYYY HH:mm:ss")
                 let levelStr = 'UNKNOWN_LEVEL'
                 if (typeof level === 'string') {
