@@ -1,0 +1,31 @@
+{
+    "name": "simple-logger",
+    "version": "0.3.0",
+    "description": "A simple logger library for JS and NodeJS",
+    "main": "src/main.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "dev": "nodemon ."
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/d0rianb/logger-lib.git"
+    },
+    "keywords": [
+        "logger",
+        "log",
+        "simple",
+        "lib",
+        "library",
+        "logging"
+    ],
+    "author": "D0rian <dorian.beauchesne@icloud.com>",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/d0rianb/logger-lib/issues"
+    },
+    "homepage": "https://github.com/d0rianb/logger-lib#readme",
+    "devDependencies": {
+        "nodemon": "^2.0.4"
+    }
+}
