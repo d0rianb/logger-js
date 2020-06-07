@@ -2,12 +2,14 @@ const fs = require('fs')
 const path = require('path')
 const moment = require('moment-timezone')
 
-const VERSION = '0.3.0'
+const packageJSON = require('../package.json')
+
+const VERSION = packageJSON.version // 0.3.0
 
 // TODO:
 //       In 0.3.0 -> Add doc
 //       In 0.3.1 -> display by level system (levelling)
-//       In 0.3.2 -> Custum level ?, change locale timezone
+//       In 0.3.2 -> CUSTUM level ?, change locale timezone
 //       In 0.4.0 -> Optimization for npm
 //       In 0.5.0 -> Test writting
 
@@ -36,20 +38,20 @@ function handdleWriteError(err) {
     }
 }
 
+
 class Logger {
 
     /**
-     * @static setOptions - Overwrite the logger options
-     * @param  {object} opts an Options Object
+     * @static set - Overwrite the logger options
+     * @param  {type} opts an OptionsObject
      */
-    static setOptions(opts) {
+    static set options(opts) {
         options = Object.assign(options, opts)
     }
 
 
     /**
      * @static log - Write a new line in the log file
-     *
      * @param  {string} filename file where the log is written
      * @param  {number|string} level    level of the log
      * @param  {string} message  content of the log
@@ -106,6 +108,7 @@ class Logger {
         return this.log(filename, 1, debug)
     }
 
+
     /**
      * @param  {string} warn                       content of the log
      * @param  {string} [filename=options.logFile] filename without path
@@ -114,6 +117,7 @@ class Logger {
         return this.log(filename, 2, warning)
     }
 
+
     /**
      * @param  {string} error                       content of the log
      * @param  {string} [filename=options.logFile] filename without path
@@ -121,6 +125,7 @@ class Logger {
     static error(error, filename = options.logFile) {
         return this.log(filename, 3, error)
     }
+
 
     /**
      * @param  {string} fatal                       content of the log
@@ -133,7 +138,6 @@ class Logger {
 
     /**
      * @static clear - Clear the log file
-     *
      * @param  {type} [filename = options.logFile]
      * @return {Logger}
      */
@@ -146,6 +150,15 @@ class Logger {
             throw `Logger Error : Unknown path ${file}`
         }
         return Logger
+    }
+
+
+    /**
+     * @static get - Version getter
+     * @return {string}  the version number of the logger in use
+     */
+    static get version() {
+        return VERSION
     }
 }
 

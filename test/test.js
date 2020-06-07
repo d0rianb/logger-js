@@ -1,3 +1,4 @@
 const Logger = require('../src/main.js')
 
-Logger.info('Le dossier n\'existe pas')
+let version = Logger.version
+console.log(version)

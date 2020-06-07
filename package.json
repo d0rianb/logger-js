@@ -5,7 +5,8 @@
     "main": "src/main.js",
     "scripts": {
         "test": "node test/test.js",
-        "dev": "node src/main.js"
+        "dev": "nodemon src/main.js",
+        "docs": "node docs/generate.js"
     },
     "repository": {
         "type": "git",
@@ -26,6 +27,7 @@
     },
     "homepage": "https://github.com/d0rianb/logger-lib#readme",
     "devDependencies": {
+        "jsdoc-to-markdown": "^6.0.1",
         "nodemon": "^2.0.4"
     },
     "dependencies": {
