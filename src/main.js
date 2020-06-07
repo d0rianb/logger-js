@@ -59,6 +59,7 @@ class Logger {
      * @param  {string} filename file where the log is written
      * @param  {number|string} level    level of the log
      * @param  {string} message  content of the log
+     * @chainable
      * @return {Logger}          Return the logger to chain methods
      */
     static log(filename, level, message) {
@@ -108,6 +109,7 @@ class Logger {
     /**
      * @param  {string} debug                       content of the log
      * @param  {string} [filename=options.logFile] filename without path
+     * @chainable
      */
     static debug(debug, filename = options.logFile) {
         return this.log(filename, 1, debug)
@@ -117,6 +119,7 @@ class Logger {
     /**
      * @param  {string} warn                       content of the log
      * @param  {string} [filename=options.logFile] filename without path
+     * @chainable
      */
     static warn(warning, filename = options.logFile) {
         return this.log(filename, 2, warning)
@@ -126,6 +129,7 @@ class Logger {
     /**
      * @param  {string} error                       content of the log
      * @param  {string} [filename=options.logFile] filename without path
+     * @chainable
      */
     static error(error, filename = options.logFile) {
         return this.log(filename, 3, error)
@@ -135,6 +139,7 @@ class Logger {
     /**
      * @param  {string} fatal                       content of the log
      * @param  {string} [filename=options.logFile] filename without path
+     * @chainable
      */
     static fatal(error, filename = options.logFile) {
         return this.log(filename, 4, error)
@@ -144,6 +149,7 @@ class Logger {
     /**
      * @static clear - Clear the log file
      * @param  {type} [filename = options.logFile]
+     * @chainable
      * @return {Logger}
      */
     static clear(filename = options.logFile) {
