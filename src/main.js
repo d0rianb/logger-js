@@ -39,6 +39,10 @@ function handdleWriteError(err) {
 }
 
 
+
+/**
+ * @class Logger
+ */
 class Logger {
 
     /**
