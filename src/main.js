@@ -98,6 +98,7 @@ class Logger {
     /**
      * @param  {string} info                       content of the log
      * @param  {string} [filename=options.logFile] filename without path
+     * @chainable
      */
     static info(info, filename = options.logFile) {
         return this.log(filename, 0, info)

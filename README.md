@@ -20,7 +20,7 @@ Then in the `.js` file :
     * [.options](#Logger.options)
     * [.version](#Logger.version) ⇒ <code>string</code>
     * [.log(filename, level, message)](#Logger.log) ⇒ [<code>Logger</code>](#Logger)
-    * [.info(info, [filename])](#Logger.info)
+    * [.info(info, [filename])](#Logger.info) ↩︎
     * [.debug(debug, [filename])](#Logger.debug)
     * [.warn(warn, [filename])](#Logger.warn)
     * [.error(error, [filename])](#Logger.error)
@@ -55,8 +55,9 @@ Then in the `.js` file :
 
 <a name="Logger.info"></a>
 
-### Logger.info(info, [filename])
+### Logger.info(info, [filename]) ↩︎
 **Kind**: static method of [<code>Logger</code>](#Logger)  
+**Chainable**  
 
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
