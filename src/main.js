@@ -8,8 +8,8 @@ const VERSION = packageJSON.version // 0.3.1
 
 // TODO:
 //       In 0.3.0 -> Add doc
-//       In 0.3.1 -> display by level system (levelling)
-//       In 0.3.2 -> CUSTUM level ?, change locale timezone
+//       In 0.3.3 -> display by level system (levelling)
+//       In 0.3.4 -> CUSTUM level ?, change locale timezone
 //       In 0.4.0 -> Add examples
 //       In 0.5.0 -> Test writting
 
