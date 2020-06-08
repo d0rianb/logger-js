@@ -10,7 +10,7 @@ const VERSION = packageJSON.version // 0.3.1
 //       In 0.3.0 -> Add doc
 //       In 0.3.1 -> display by level system (levelling)
 //       In 0.3.2 -> CUSTUM level ?, change locale timezone
-//       In 0.4.0 -> Optimization for npm
+//       In 0.4.0 -> Add examples
 //       In 0.5.0 -> Test writting
 
 const levels = {
@@ -22,9 +22,9 @@ const levels = {
 }
 
 
-const options = {
-    logFile: 'logs.log',
-    logsFolder: path.resolve(__dirname, '../logs/'),
+let options = {
+    filename: 'logs.log',
+    folder: path.resolve(__dirname, '../logs/'),
     extension: 'log',
     timezone: 'Europe/Berlin', // Not implemented yet
     heroku_logs: false,
@@ -39,7 +39,6 @@ function handdleWriteError(err) {
 }
 
 
-
 /**
  * @class Logger
  */
@@ -47,10 +46,21 @@ class Logger {
 
     /**
      * @static set - Overwrite the logger options
-     * @param  {type} opts an OptionsObject
+     * @param  {object} opts logger default values
      */
     static set options(opts) {
         options = Object.assign(options, opts)
+    }
+
+
+
+    /**
+     * @static get - Logger ootions
+     *
+     * @return {object}
+     */
+    static get options() {
+        return options
     }
 
 
@@ -63,7 +73,7 @@ class Logger {
      * @return {Logger}          Return the logger to chain methods
      */
     static log(filename, level, message) {
-        const dirPath = options.logsFolder
+        const dirPath = options.folder
         const file = path.resolve(dirPath, filename)
 
         const date = moment().tz('Europe/Berlin').format("DD-MM-YYYY HH:mm:ss")
@@ -98,63 +108,63 @@ class Logger {
 
     /**
      * @param  {string} info                       content of the log
-     * @param  {string} [filename=options.logFile] filename without path
+     * @param  {string} [filename=options.filename] filename without path
      * @chainable
      */
-    static info(info, filename = options.logFile) {
+    static info(info, filename = options.filename) {
         return this.log(filename, 0, info)
     }
 
 
     /**
      * @param  {string} debug                       content of the log
-     * @param  {string} [filename=options.logFile] filename without path
+     * @param  {string} [filename=options.filename] filename without path
      * @chainable
      */
-    static debug(debug, filename = options.logFile) {
+    static debug(debug, filename = options.filename) {
         return this.log(filename, 1, debug)
     }
 
 
     /**
      * @param  {string} warn                       content of the log
-     * @param  {string} [filename=options.logFile] filename without path
+     * @param  {string} [filename=options.filename] filename without path
      * @chainable
      */
-    static warn(warning, filename = options.logFile) {
+    static warn(warning, filename = options.filename) {
         return this.log(filename, 2, warning)
     }
 
 
     /**
      * @param  {string} error                       content of the log
-     * @param  {string} [filename=options.logFile] filename without path
+     * @param  {string} [filename=options.filename] filename without path
      * @chainable
      */
-    static error(error, filename = options.logFile) {
+    static error(error, filename = options.filename) {
         return this.log(filename, 3, error)
     }
 
 
     /**
      * @param  {string} fatal                       content of the log
-     * @param  {string} [filename=options.logFile] filename without path
+     * @param  {string} [filename=options.filename] filename without path
      * @chainable
      */
-    static fatal(error, filename = options.logFile) {
+    static fatal(error, filename = options.filename) {
         return this.log(filename, 4, error)
     }
 
 
     /**
      * @static clear - Clear the log file
-     * @param  {type} [filename = options.logFile]
+     * @param  {type} [filename = options.filename]
      * @chainable
      * @return {Logger}
      */
-    static clear(filename = options.logFile) {
+    static clear(filename = options.filename) {
         if (!filename) throw 'Logger Error : No filename specified'
-        let file = path.resolve(options.logsFolder, filename)
+        let file = path.resolve(options.folder, filename)
         if (fs.existsSync(file)) {
             fs.writeFile(file, '', err => handdleWriteError(err))
         } else {

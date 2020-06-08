@@ -1,4 +1,7 @@
 const Logger = require('../src/main.js')
 
-let version = Logger.version
-console.log(version)
+Logger.options = { filename: 'test.log' }
+Logger
+    .warn('test d\'options', 'logs.log')
+    .info('test vener')
+    .fatal('hey ça marche', 'fatal.log')
