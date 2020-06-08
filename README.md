@@ -14,6 +14,21 @@ Then in the `.js` file :
 
 ## Documentation
 
+## Classes
+
+<dl>
+<dt><a href="#Logger">Logger</a></dt>
+<dd></dd>
+</dl>
+
+## Typedefs
+
+<dl>
+<dt><a href="#OptionsObject">OptionsObject</a> : <code>Object</code></dt>
+<dd><p>Logger options</p>
+</dd>
+</dl>
+
 <a name="Logger"></a>
 
 ## Logger
@@ -21,7 +36,7 @@ Then in the `.js` file :
 
 * [Logger](#Logger)
     * [.options](#Logger.options)
-    * [.options](#Logger.options) ⇒ <code>object</code>
+    * [.options](#Logger.options) ⇒ [<code>OptionsObject</code>](#OptionsObject)
     * [.version](#Logger.version) ⇒ <code>string</code>
     * [.log(filename, level, message)](#Logger.log) ⇒ [<code>Logger</code>](#Logger)
     * [.info(info, [filename])](#Logger.info) ↩︎
@@ -35,6 +50,7 @@ Then in the `.js` file :
 
 ### Logger.options
 **Kind**: static property of [<code>Logger</code>](#Logger)  
+**Setter**: overwrite the logger options  
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -42,13 +58,15 @@ Then in the `.js` file :
 
 <a name="Logger.options"></a>
 
-### Logger.options ⇒ <code>object</code>
+### Logger.options ⇒ [<code>OptionsObject</code>](#OptionsObject)
 **Kind**: static property of [<code>Logger</code>](#Logger)  
+**Getter**: get the logger options  
 <a name="Logger.version"></a>
 
 ### Logger.version ⇒ <code>string</code>
 **Kind**: static property of [<code>Logger</code>](#Logger)  
 **Returns**: <code>string</code> - the version number of the logger in use  
+**Getter**: Version getter  
 <a name="Logger.log"></a>
 
 ### Logger.log(filename, level, message) ⇒ [<code>Logger</code>](#Logger)
@@ -126,6 +144,19 @@ Then in the `.js` file :
 | Param | Type | Default |
 | --- | --- | --- |
 | [filename] | <code>type</code> | <code>options.filename</code> | 
+
+<a name="OptionsObject"></a>
+
+## OptionsObject : <code>Object</code>
+Logger options
+
+**Kind**: global typedef  
+**Properties**
+
+| Name | Type |
+| --- | --- |
+| filemane? | <code>string</code> | 
+| folder? | <code>string</code> | 
 
 
 * * *

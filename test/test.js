@@ -1,7 +1,15 @@
 const Logger = require('../src/main.js')
 
-Logger.options = { filename: 'test.log' }
 Logger
-    .warn('test d\'options', 'logs.log')
-    .info('test vener')
-    .fatal('hey ça marche', 'fatal.log')
+    .info('test d\info', 'info.log')
+    .debug('test de debug', 'debug.log')
+    .warn('test de warn', 'warn.log')
+    .error('test d\'erreur', 'error.log')
+    .fatal('test de fatal', 'fatal.log')
+
+Logger
+    .info('test de défaut')
+    .options = { filename: 'newLogs.log' }
+
+Logger
+    .info('test de défaut dans Newlog.log')

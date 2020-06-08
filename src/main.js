@@ -21,7 +21,12 @@ const levels = {
     4: 'FATAL'
 }
 
-
+/**
+ * Logger options
+ * @typedef {Object} OptionsObject
+ * @property {string} filemane?
+ * @property {string} folder?
+ */
 let options = {
     filename: 'logs.log',
     folder: path.resolve(__dirname, '../logs/'),
@@ -45,7 +50,7 @@ function handdleWriteError(err) {
 class Logger {
 
     /**
-     * @static set - Overwrite the logger options
+     * @setter overwrite the logger options
      * @param  {object} opts logger default values
      */
     static set options(opts) {
@@ -55,9 +60,8 @@ class Logger {
 
 
     /**
-     * @static get - Logger ootions
-     *
-     * @return {object}
+     * @getter get the logger options
+     * @return {OptionsObject}
      */
     static get options() {
         return options
@@ -175,7 +179,7 @@ class Logger {
 
 
     /**
-     * @static get - Version getter
+     * @getter Version getter
      * @return {string}  the version number of the logger in use
      */
     static get version() {
