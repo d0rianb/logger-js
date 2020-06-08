@@ -4,7 +4,7 @@ const moment = require('moment-timezone')
 
 const packageJSON = require('../package.json')
 
-const VERSION = packageJSON.version // 0.3.0
+const VERSION = packageJSON.version // 0.3.1
 
 // TODO:
 //       In 0.3.0 -> Add doc

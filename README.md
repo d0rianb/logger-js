@@ -1,7 +1,7 @@
 # Logger library
 
 [![npm version](https://badge.fury.io/js/%40dorianb%2Flogger-js.svg)](https://badge.fury.io/js/%40dorianb%2Flogger-js)
-[![npm downloads](https://badgen.net/npm/dt/@dorianb/logger-js)](https://badgen.net/npm/dt/@dorianb/logger-js)
+[![npm downloads](https://badgen.net/npm/dt/@dorianb/logger-js)](https://www.npmjs.com/package/@dorianb/logger-js)
 
 `logger-js` is a npm logger library for JS and NodeJS
 
