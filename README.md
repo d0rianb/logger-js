@@ -44,7 +44,7 @@ Then in the `.js` file :
     * [.warn(warn, [filename])](#Logger.warn) ↩︎
     * [.error(error, [filename])](#Logger.error) ↩︎
     * [.fatal(fatal, [filename])](#Logger.fatal) ↩︎
-    * [.clear([filename])](#Logger.clear) ⇒ [<code>Logger</code>](#Logger)
+    * [.clear()](#Logger.clear) ⇒ [<code>Logger</code>](#Logger)
 
 <a name="Logger.options"></a>
 
@@ -137,13 +137,13 @@ Then in the `.js` file :
 
 <a name="Logger.clear"></a>
 
-### Logger.clear([filename]) ⇒ [<code>Logger</code>](#Logger)
+### Logger.clear() ⇒ [<code>Logger</code>](#Logger)
 <!-- Empty to hide the `**Kind**` tag in documentation -->
 **Chainable**  
 
-| Param | Type | Default |
-| --- | --- | --- |
-| [filename] | <code>type</code> | <code>options.filename</code> | 
+| Param | Type |
+| --- | --- |
+| [options.filename] | <code>string</code> | 
 
 <a name="OptionsObject"></a>
 

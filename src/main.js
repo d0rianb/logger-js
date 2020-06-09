@@ -7,11 +7,11 @@ const packageJSON = require('../package.json')
 const VERSION = packageJSON.version // 0.3.1
 
 // TODO:
-//       In 0.3.0 -> Add doc
-//       In 0.3.3 -> display by level system (levelling)
-//       In 0.3.4 -> CUSTUM level ?, change locale timezone
-//       In 0.4.0 -> Add examples
-//       In 0.4.1 -> Body partial for the doc
+//       In 0.3.4 -> Clear multiple file at once
+//       In 0.3.5 -> display by level system (levelling)
+//       In 0.4.0 -> CUSTUM level ?, change locale timezone
+//       In 0.4.1 -> Add examples
+//       In 0.4.2 -> Body partial for the doc
 //       In 0.5.0 -> Test writting
 
 const levels = {
@@ -59,7 +59,6 @@ class Logger {
         options = Object.assign(options, opts)
     }
 
-
     /**
      * @getter Return the options of the logger
      * @return {OptionsObject}
@@ -67,7 +66,6 @@ class Logger {
     static get options() {
         return options
     }
-
 
     /**
      * @static log - Write a new line in the log file
@@ -110,7 +108,6 @@ class Logger {
         return Logger // to chain methods
     }
 
-
     /**
      * @param  {string} info                       content of the log
      * @param  {string} [filename=options.filename] filename without path
@@ -119,7 +116,6 @@ class Logger {
     static info(info, filename = options.filename) {
         return this.log(filename, 0, info)
     }
-
 
     /**
      * @param  {string} debug                       content of the log
@@ -130,7 +126,6 @@ class Logger {
         return this.log(filename, 1, debug)
     }
 
-
     /**
      * @param  {string} warn                       content of the log
      * @param  {string} [filename=options.filename] filename without path
@@ -139,7 +134,6 @@ class Logger {
     static warn(warning, filename = options.filename) {
         return this.log(filename, 2, warning)
     }
-
 
     /**
      * @param  {string} error                       content of the log
@@ -150,7 +144,6 @@ class Logger {
         return this.log(filename, 3, error)
     }
 
-
     /**
      * @param  {string} fatal                       content of the log
      * @param  {string} [filename=options.filename] filename without path
@@ -160,24 +153,35 @@ class Logger {
         return this.log(filename, 4, error)
     }
 
-
     /**
      * @static clear - Clear the log file
-     * @param  {type} [filename = options.filename]
+     * @param  {string} [options.filename]
      * @chainable
      * @return {Logger}
      */
-    static clear(filename = options.filename) {
-        if (!filename) throw 'Logger Error : No filename specified'
-        let file = path.resolve(options.folder, filename)
-        if (fs.existsSync(file)) {
-            fs.writeFile(file, '', err => handdleWriteError(err))
+    static clear(...filename) {
+        if (!filename.length) this.clearFile(options.filename)
+        if (Array.isArray(filename)) {
+            filename.forEach(file => this.clearFile(file))
         } else {
-            throw `Logger Error : Unknown path ${file}`
+            this.clearFile(filename)
         }
         return Logger
     }
 
+    /**
+     * Clear the file
+     * @private
+     * @param {string}
+     */
+    static clearFile(filename) {
+        const file = path.resolve(options.folder, filename)
+        if (fs.existsSync(file)) {
+            fs.truncate(file, 0, err => handdleWriteError(err))
+        } else {
+            throw `Logger Error : Unknown path ${file}`
+        }
+    }
 
     /**
      * @getter Version getter
