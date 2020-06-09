@@ -7,8 +7,8 @@ const packageJSON = require('../package.json')
 const VERSION = packageJSON.version // 0.3.1
 
 // TODO:
-//       In 0.3.4 -> Clear multiple file at once
-//       In 0.3.5 -> display by level system (levelling)
+//       In 0.3.3 -> Clear multiple file at once
+//       In 0.3.4 -> display by level system (levelling)
 //       In 0.4.0 -> CUSTUM level ?, change locale timezone
 //       In 0.4.1 -> Add examples
 //       In 0.4.2 -> Body partial for the doc
