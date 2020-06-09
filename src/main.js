@@ -4,7 +4,7 @@ const moment = require('moment-timezone')
 
 const packageJSON = require('../package.json')
 
-const VERSION = packageJSON.version // 0.3.1
+const VERSION = packageJSON.version
 
 // TODO:
 //       In 0.3.3 -> Clear multiple file at once
