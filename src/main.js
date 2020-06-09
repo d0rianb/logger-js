@@ -11,6 +11,7 @@ const VERSION = packageJSON.version // 0.3.1
 //       In 0.3.3 -> display by level system (levelling)
 //       In 0.3.4 -> CUSTUM level ?, change locale timezone
 //       In 0.4.0 -> Add examples
+//       In 0.4.1 -> Body partial for the doc
 //       In 0.5.0 -> Test writting
 
 const levels = {
@@ -24,13 +25,14 @@ const levels = {
 /**
  * Logger options
  * @typedef {Object} OptionsObject
- * @property {string} filemane?
- * @property {string} folder?
+ * @property {string} [filename='logs.log']
+ * @property {string} [folder='./logs/']
+ * @property {string} [extension='.log']
  */
 let options = {
     filename: 'logs.log',
     folder: path.resolve(__dirname, '../logs/'),
-    extension: 'log',
+    extension: '.log',
     timezone: 'Europe/Berlin', // Not implemented yet
     heroku_logs: false,
     showPID: false, // Not implemented yet
@@ -58,9 +60,8 @@ class Logger {
     }
 
 
-
     /**
-     * @getter get the logger options
+     * @getter Return the options of the logger
      * @return {OptionsObject}
      */
     static get options() {
@@ -98,10 +99,10 @@ class Logger {
             fs.mkdirSync(dirPath, { recursive: true })
         }
         if (fs.existsSync(file)) {
-            if (path.extname(file) === `.${options.extension}`) {
+            if (path.extname(file) === `${options.extension}`) {
                 fs.appendFile(file, msg, err => handdleWriteError(err))
             } else {
-                throw `Logger error : file ${file} extension is not .log`
+                throw `Logger error : file: "${file}" extension is not ${options.extension}`
             }
         } else {
             fs.writeFile(file, msg, err => handdleWriteError(err))
@@ -180,7 +181,7 @@ class Logger {
 
     /**
      * @getter Version getter
-     * @return {string}  the version number of the logger in use
+     * @return {string}  the version number of the logger
      */
     static get version() {
         return VERSION
