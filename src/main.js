@@ -33,8 +33,7 @@ const levels = {
  */
 let options = {
     filename: 'logs.log',
-    folder: path.resolve(pkgDir.sync(__dirname), './logs/'),
-    // folder: path.resolve(__dirname, '../logs/'),
+    folder: path.resolve(pkgDir.sync(), './logs/'),
     displayLevel: 0,
     extension: '.log',
     timezone: 'Europe/Berlin', // Not implemented yet
