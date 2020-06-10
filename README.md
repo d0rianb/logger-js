@@ -56,17 +56,29 @@ Then in the `.js` file :
 | --- | --- | --- |
 | opts | <code>object</code> | logger default values |
 
+**Example**  
+```js
+Logger.options = {filename: 'production.log'}
+```
 <a name="Logger.options"></a>
 
 ### Logger.options ⇒ [<code>OptionsObject</code>](#OptionsObject)
 <!-- Empty to hide the `**Kind**` tag in documentation -->
 **Getter**: Return the options of the logger  
+**Example**  
+```js
+const loggerOptions = Logger.options
+```
 <a name="Logger.version"></a>
 
 ### Logger.version ⇒ <code>string</code>
 <!-- Empty to hide the `**Kind**` tag in documentation -->
 **Returns**: <code>string</code> - the version number of the logger  
 **Getter**: Version getter  
+**Example**  
+```js
+const version = Logger.version
+```
 <a name="Logger.log"></a>
 
 ### Logger.log(filename, level, message) ⇒ [<code>Logger</code>](#Logger)
@@ -80,6 +92,11 @@ Then in the `.js` file :
 | level | <code>number</code> \| <code>string</code> | level of the log |
 | message | <code>string</code> | content of the log |
 
+**Example**  
+```js
+Logger.log('network.log', 'WARN', 'Socket disconnected')
+// --> [10-06-2020 06:43:51] - WARN - Socket disconnected
+```
 <a name="Logger.info"></a>
 
 ### Logger.info(info, [filename]) ↩︎
@@ -91,6 +108,11 @@ Then in the `.js` file :
 | info | <code>string</code> |  | content of the log |
 | [filename] | <code>string</code> | <code>&quot;options.filename&quot;</code> | filename without path |
 
+**Example**  
+```js
+Logger.info('Server has started')
+Logger.info('Server has started', 'server.log')
+```
 <a name="Logger.debug"></a>
 
 ### Logger.debug(debug, [filename]) ↩︎
@@ -102,6 +124,11 @@ Then in the `.js` file :
 | debug | <code>string</code> |  | content of the log |
 | [filename] | <code>string</code> | <code>&quot;options.filename&quot;</code> | filename without path |
 
+**Example**  
+```js
+Logger.debug(`Client ID = ${clientID}`)
+Logger.debug(`Client ID = ${clientID}`, 'clients.log')
+```
 <a name="Logger.warn"></a>
 
 ### Logger.warn(warn, [filename]) ↩︎
@@ -113,6 +140,11 @@ Then in the `.js` file :
 | warn | <code>string</code> |  | content of the log |
 | [filename] | <code>string</code> | <code>&quot;options.filename&quot;</code> | filename without path |
 
+**Example**  
+```js
+Logger.warn(`Database disconnected`)
+Logger.warn(`Database disconnected`, 'connections.log')
+```
 <a name="Logger.error"></a>
 
 ### Logger.error(error, [filename]) ↩︎
@@ -124,6 +156,11 @@ Then in the `.js` file :
 | error | <code>string</code> |  | content of the log |
 | [filename] | <code>string</code> | <code>&quot;options.filename&quot;</code> | filename without path |
 
+**Example**  
+```js
+Logger.error(`Connection to 127.0.0.1:2000 refused`)
+Logger.error(`Connection to 127.0.0.1:2000 refused`, 'logs.log')
+```
 <a name="Logger.fatal"></a>
 
 ### Logger.fatal(fatal, [filename]) ↩︎
@@ -135,6 +172,11 @@ Then in the `.js` file :
 | fatal | <code>string</code> |  | content of the log |
 | [filename] | <code>string</code> | <code>&quot;options.filename&quot;</code> | filename without path |
 
+**Example**  
+```js
+Logger.fatal(`Division by zero`)
+Logger.fatal(`Division by zero`, 'logs.log')
+```
 <a name="Logger.clear"></a>
 
 ### Logger.clear() ⇒ [<code>Logger</code>](#Logger)
@@ -145,6 +187,12 @@ Then in the `.js` file :
 | --- | --- |
 | [options.filename] | <code>string</code> | 
 
+**Example**  
+```js
+Logger.clear()
+Logger.clear('client.log')
+Logger.clear('client.log', 'connections.log', 'logs.log')
+```
 <a name="OptionsObject"></a>
 
 ## OptionsObject : <code>Object</code>
@@ -153,11 +201,12 @@ Logger options
 <!-- Empty to hide the `**Kind**` tag in documentation -->
 **Properties**
 
-| Name | Type | Default |
-| --- | --- | --- |
-| [filename] | <code>string</code> | <code>&quot;&#x27;logs.log&#x27;&quot;</code> | 
-| [folder] | <code>string</code> | <code>&quot;&#x27;./logs/&#x27;&quot;</code> | 
-| [extension] | <code>string</code> | <code>&quot;&#x27;.log&#x27;&quot;</code> | 
+| Name | Type | Default | Description |
+| --- | --- | --- | --- |
+| [filename] | <code>string</code> | <code>&quot;&#x27;logs.log&#x27;&quot;</code> |  |
+| [folder] | <code>string</code> | <code>&quot;&#x27;./logs/&#x27;&quot;</code> |  |
+| [extension] | <code>string</code> | <code>&quot;&#x27;.log&#x27;&quot;</code> |  |
+| [displayLevel] | <code>string</code> \| <code>number</code> | <code>0</code> | The level below a log is not display |
 
 
 * * *

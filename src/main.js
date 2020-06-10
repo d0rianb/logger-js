@@ -9,8 +9,8 @@ const VERSION = packageJSON.version
 // TODO:
 //       In 0.3.3 -> Clear multiple file at once
 //       In 0.3.4 -> display by level system (levelling)
-//       In 0.4.0 -> CUSTUM level ?, change locale timezone
-//       In 0.4.1 -> Add examples
+//       In 0.4.0 -> Add examples
+//       In 0.4.1 -> CUSTUM level ?, change locale timezone
 //       In 0.4.2 -> Body partial for the doc
 //       In 0.5.0 -> Test writting
 
@@ -28,10 +28,12 @@ const levels = {
  * @property {string} [filename='logs.log']
  * @property {string} [folder='./logs/']
  * @property {string} [extension='.log']
+ * @property {string|number} [displayLevel=0] The level below a log is not display
  */
 let options = {
     filename: 'logs.log',
     folder: path.resolve(__dirname, '../logs/'),
+    displayLevel: 0,
     extension: '.log',
     timezone: 'Europe/Berlin', // Not implemented yet
     heroku_logs: false,
@@ -39,6 +41,12 @@ let options = {
     showHostname: false // Not implemented yet
 }
 
+
+/**
+ * @private
+ * @param  {Error} err fs write error
+ * @throw {Error}
+ */
 function handdleWriteError(err) {
     if (err) {
         throw err
@@ -54,6 +62,7 @@ class Logger {
     /**
      * @setter overwrite the logger options
      * @param  {object} opts logger default values
+     * @example Logger.options = {filename: 'production.log'}
      */
     static set options(opts) {
         options = Object.assign(options, opts)
@@ -62,6 +71,7 @@ class Logger {
     /**
      * @getter Return the options of the logger
      * @return {OptionsObject}
+     * @example const loggerOptions = Logger.options
      */
     static get options() {
         return options
@@ -69,11 +79,13 @@ class Logger {
 
     /**
      * @static log - Write a new line in the log file
-     * @param  {string} filename file where the log is written
+     * @param  {string}        filename file where the log is written
      * @param  {number|string} level    level of the log
-     * @param  {string} message  content of the log
+     * @param  {string}        message  content of the log
+     * @return {Logger}        Return the logger to chain methods
      * @chainable
-     * @return {Logger}          Return the logger to chain methods
+     * @example Logger.log('network.log', 'WARN', 'Socket disconnected')
+     * // --> [10-06-2020 06:43:51] - WARN - Socket disconnected
      */
     static log(filename, level, message) {
         const dirPath = options.folder
@@ -87,6 +99,13 @@ class Logger {
             levelStr = levels[level]
         }
         const msg = `[${date}] - ${levelStr} - ${message} \n`
+
+        const displayLevelIndex = typeof options.displayLevel === 'number' ? options.displayLevel : Number(Object.keys(levels).find(index => levels[index].includes(options.displayLevel.toUpperCase())))
+        const levelIndex = typeof level === 'number' ? level : Number(Object.keys(levels).find(index => levels[index].includes(level.toUpperCase())))
+        if (!Number.isNaN(displayLevelIndex) && !Number.isNaN(levelIndex) && displayLevelIndex > levelIndex) {
+            return Logger
+        }
+
 
         if (options.heroku_logs) {
             console.log(msg.replace('\n', ''))
@@ -112,6 +131,9 @@ class Logger {
      * @param  {string} info                       content of the log
      * @param  {string} [filename=options.filename] filename without path
      * @chainable
+     * @example
+     * Logger.info('Server has started')
+     * Logger.info('Server has started', 'server.log')
      */
     static info(info, filename = options.filename) {
         return this.log(filename, 0, info)
@@ -121,6 +143,9 @@ class Logger {
      * @param  {string} debug                       content of the log
      * @param  {string} [filename=options.filename] filename without path
      * @chainable
+     * @example
+     * Logger.debug(`Client ID = ${clientID}`)
+     * Logger.debug(`Client ID = ${clientID}`, 'clients.log')
      */
     static debug(debug, filename = options.filename) {
         return this.log(filename, 1, debug)
@@ -130,6 +155,9 @@ class Logger {
      * @param  {string} warn                       content of the log
      * @param  {string} [filename=options.filename] filename without path
      * @chainable
+     * @example
+     * Logger.warn(`Database disconnected`)
+     * Logger.warn(`Database disconnected`, 'connections.log')
      */
     static warn(warning, filename = options.filename) {
         return this.log(filename, 2, warning)
@@ -139,6 +167,9 @@ class Logger {
      * @param  {string} error                       content of the log
      * @param  {string} [filename=options.filename] filename without path
      * @chainable
+     * @example
+     * Logger.error(`Connection to 127.0.0.1:2000 refused`)
+     * Logger.error(`Connection to 127.0.0.1:2000 refused`, 'logs.log')
      */
     static error(error, filename = options.filename) {
         return this.log(filename, 3, error)
@@ -148,6 +179,9 @@ class Logger {
      * @param  {string} fatal                       content of the log
      * @param  {string} [filename=options.filename] filename without path
      * @chainable
+     * @example
+     * Logger.fatal(`Division by zero`)
+     * Logger.fatal(`Division by zero`, 'logs.log')
      */
     static fatal(error, filename = options.filename) {
         return this.log(filename, 4, error)
@@ -158,6 +192,10 @@ class Logger {
      * @param  {string} [options.filename]
      * @chainable
      * @return {Logger}
+     * @example
+     * Logger.clear()
+     * Logger.clear('client.log')
+     * Logger.clear('client.log', 'connections.log', 'logs.log')
      */
     static clear(...filename) {
         if (!filename.length) this.clearFile(options.filename)
@@ -186,6 +224,7 @@ class Logger {
     /**
      * @getter Version getter
      * @return {string}  the version number of the logger
+     * @example const version = Logger.version
      */
     static get version() {
         return VERSION
