@@ -7,10 +7,14 @@
 
 ## Installation
 To install the package, just run :
-`npm install --save @dorianb/logger-js`
+```bash
+npm install --save @dorianb/logger-js
+```
 
 Then in the `.js` file :
-`const Logger = require('@dorianb/logger-js')`
+```js
+const Logger = require('@dorianb/logger-js')
+```
 
 ## Documentation
 
@@ -54,7 +58,7 @@ Then in the `.js` file :
 
 | Param | Type | Description |
 | --- | --- | --- |
-| opts | <code>object</code> | logger default values |
+| opts | [<code>OptionsObject</code>](#OptionsObject) | logger default values |
 
 **Example**  
 ```js

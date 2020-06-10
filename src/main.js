@@ -61,7 +61,7 @@ class Logger {
 
     /**
      * @setter overwrite the logger options
-     * @param  {object} opts logger default values
+     * @param  {OptionsObject} opts logger default values
      * @example Logger.options = {filename: 'production.log'}
      */
     static set options(opts) {
