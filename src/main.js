@@ -28,11 +28,12 @@ const levels = {
  * @property {string} [filename='logs.log']
  * @property {string} [folder='./logs/']
  * @property {string} [extension='.log']
- * @property {string|number} [displayLevel=0] The level below a log is not display
+ * @property {string|number} [displayLevel=0] The level below a log is not displayed
  */
 let options = {
     filename: 'logs.log',
-    folder: path.resolve(__dirname, '../logs/'),
+    folder: path.resolve(path.dirname(require.main.filename), '../logs/'),
+    // folder: path.resolve(__dirname, '../logs/'),
     displayLevel: 0,
     extension: '.log',
     timezone: 'Europe/Berlin', // Not implemented yet
