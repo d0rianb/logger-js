@@ -1,4 +1,6 @@
 const Logger = require('../src/main.js')
+const path = require('path')
+
 
 // Logger
 //     .info('test d\'info', 'info.log')

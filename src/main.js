@@ -1,6 +1,7 @@
 const fs = require('fs')
 const path = require('path')
 const moment = require('moment-timezone')
+const pkgDir = require('pkg-dir')
 
 const packageJSON = require('../package.json')
 
@@ -11,8 +12,8 @@ const VERSION = packageJSON.version
 //       In 0.3.4 -> display by level system (levelling)
 //       In 0.4.0 -> Add examples
 //       In 0.4.1 -> CUSTUM level ?, change locale timezone
-//       In 0.4.2 -> Body partial for the doc
-//       In 0.5.0 -> Test writting
+//       In 0.5.2 -> Body partial for the doc
+//       In 0.6.0 -> Test writting
 
 const levels = {
     0: 'INFO',
@@ -32,7 +33,7 @@ const levels = {
  */
 let options = {
     filename: 'logs.log',
-    folder: path.resolve(path.dirname(require.main.filename), '../logs/'),
+    folder: path.resolve(pkgDir.sync(__dirname), './logs/'),
     // folder: path.resolve(__dirname, '../logs/'),
     displayLevel: 0,
     extension: '.log',

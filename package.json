@@ -1,6 +1,6 @@
 {
     "name": "@dorianb/logger-js",
-    "version": "0.4.1",
+    "version": "0.4.2",
     "description": "A simple logger library for JS and NodeJS",
     "main": "src/main.js",
     "scripts": {
@@ -29,6 +29,7 @@
         "nodemon": "^2.0.4"
     },
     "dependencies": {
-        "moment-timezone": "^0.5.31"
+        "moment-timezone": "^0.5.31",
+        "pkg-dir": "^4.2.0"
     }
 }
