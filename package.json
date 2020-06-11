@@ -1,12 +1,12 @@
 {
     "name": "@dorianb/logger-js",
-    "version": "0.4.4",
+    "version": "0.5.0",
     "description": "A simple logger library for JS and NodeJS",
-    "main": "src/main.js",
+    "main": "lib/main.js",
     "scripts": {
         "test": "node test/test.js",
-        "dev": "nodemon src/main.js",
-        "docs": "node_modules/.bin/jsdoc2md  --no-cache --partial docs/scope.hbs -t docs/README.hbs src/*.js > README.md"
+        "dev": "nodemon lib/main.js",
+        "docs": "node_modules/.bin/jsdoc2md  --no-cache --partial docs/scope.hbs -t docs/README.hbs lib/*.js > README.md"
     },
     "repository": {
         "type": "git",

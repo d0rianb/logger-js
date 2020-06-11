@@ -3,7 +3,7 @@
 [![npm version](https://badge.fury.io/js/%40dorianb%2Flogger-js.svg)](https://badge.fury.io/js/%40dorianb%2Flogger-js)
 [![npm downloads](https://badgen.net/npm/dt/@dorianb/logger-js)](https://www.npmjs.com/package/@dorianb/logger-js)
 
-`logger-js` is a npm logger library for JS and NodeJS
+`logger-js` is a npm logger library for NodeJS
 
 ## Installation
 To install the package, just run :
@@ -28,9 +28,11 @@ const Logger = require('@dorianb/logger-js')
 ## Typedefs
 
 <dl>
-<dt><a href="#OptionsObject">OptionsObject</a> : <code>Object</code></dt>
-<dd><p>Logger options</p>
+<dt><a href="#LevelsObject">LevelsObject</a> : <code>Object</code></dt>
+<dd><p>A dictionnary of the logger levels indexed by priority</p>
 </dd>
+<dt><a href="#OptionsObject">OptionsObject</a> : <code>Object</code></dt>
+<dd></dd>
 </dl>
 
 <a name="Logger"></a>
@@ -42,6 +44,7 @@ const Logger = require('@dorianb/logger-js')
     * [.options](#Logger.options)
     * [.options](#Logger.options) ⇒ [<code>OptionsObject</code>](#OptionsObject)
     * [.version](#Logger.version) ⇒ <code>string</code>
+    * [.levels](#Logger.levels) ⇒ [<code>LevelsObject</code>](#LevelsObject)
     * [.log(filename, level, message)](#Logger.log) ⇒ [<code>Logger</code>](#Logger)
     * [.info(info, [filename])](#Logger.info) ↩︎
     * [.debug(debug, [filename])](#Logger.debug) ↩︎
@@ -49,6 +52,7 @@ const Logger = require('@dorianb/logger-js')
     * [.error(error, [filename])](#Logger.error) ↩︎
     * [.fatal(fatal, [filename])](#Logger.fatal) ↩︎
     * [.clear()](#Logger.clear) ⇒ [<code>Logger</code>](#Logger)
+    * [.addLevel(newLevel)](#Logger.addLevel) ↩︎
 
 <a name="Logger.options"></a>
 
@@ -82,6 +86,15 @@ const loggerOptions = Logger.options
 **Example**  
 ```js
 const version = Logger.version
+```
+<a name="Logger.levels"></a>
+
+### Logger.levels ⇒ [<code>LevelsObject</code>](#LevelsObject)
+<!-- Empty to hide the `**Kind**` tag in documentation -->
+**Getter**: Levels getter  
+**Example**  
+```js
+const levels = Logger.levels
 ```
 <a name="Logger.log"></a>
 
@@ -197,11 +210,29 @@ Logger.clear()
 Logger.clear('client.log')
 Logger.clear('client.log', 'connections.log', 'logs.log')
 ```
+<a name="Logger.addLevel"></a>
+
+### Logger.addLevel(newLevel) ↩︎
+<!-- Empty to hide the `**Kind**` tag in documentation -->
+**Chainable**  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| newLevel | <code>string</code> | The label of the new level |
+
+**Example**  
+```js
+Logger.addLevel('Important')
+```
+<a name="LevelsObject"></a>
+
+## LevelsObject : <code>Object</code>
+A dictionnary of the logger levels indexed by priority
+
+<!-- Empty to hide the `**Kind**` tag in documentation -->
 <a name="OptionsObject"></a>
 
 ## OptionsObject : <code>Object</code>
-Logger options
-
 <!-- Empty to hide the `**Kind**` tag in documentation -->
 **Properties**
 
@@ -210,7 +241,8 @@ Logger options
 | [filename] | <code>string</code> | <code>&quot;&#x27;logs.log&#x27;&quot;</code> |  |
 | [folder] | <code>string</code> | <code>&quot;&#x27;./logs/&#x27;&quot;</code> |  |
 | [extension] | <code>string</code> | <code>&quot;&#x27;.log&#x27;&quot;</code> |  |
-| [displayLevel] | <code>string</code> \| <code>number</code> | <code>0</code> | The level below a log is not display |
+| [timezone] | <code>string</code> | <code>&quot;&#x27;Europe/Berlin&#x27;&quot;</code> | A moment timezone --> Full list at: https://momentjs.com/timezone |
+| [displayLevel] | <code>string</code> \| <code>number</code> | <code>0</code> | The level below a log is not displayed |
 
 
 * * *
