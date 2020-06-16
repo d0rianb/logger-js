@@ -52,7 +52,7 @@ const Logger = require('@dorianb/logger-js')
     * [.error(error, [filename])](#Logger.error) ↩︎
     * [.fatal(fatal, [filename])](#Logger.fatal) ↩︎
     * [.clear()](#Logger.clear) ⇒ [<code>Logger</code>](#Logger)
-    * [.addLevel(newLevel)](#Logger.addLevel) ↩︎
+    * [.addLevel(newLevel)](#Logger.addLevel) ⇒ <code>int</code>
 
 <a name="Logger.options"></a>
 
@@ -212,9 +212,9 @@ Logger.clear('client.log', 'connections.log', 'logs.log')
 ```
 <a name="Logger.addLevel"></a>
 
-### Logger.addLevel(newLevel) ↩︎
+### Logger.addLevel(newLevel) ⇒ <code>int</code>
 <!-- Empty to hide the `**Kind**` tag in documentation -->
-**Chainable**  
+**Returns**: <code>int</code> - the level number  
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -222,7 +222,7 @@ Logger.clear('client.log', 'connections.log', 'logs.log')
 
 **Example**  
 ```js
-Logger.addLevel('Important')
+const importnantLevel = Logger.addLevel('Important')
 ```
 <a name="LevelsObject"></a>
 
