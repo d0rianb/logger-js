@@ -41,10 +41,10 @@ const Logger = require('@dorianb/logger-js')
 <!-- Empty to hide the `**Kind**` tag in documentation -->
 
 * [Logger](#Logger)
-    * [.options](#Logger.options)
     * [.options](#Logger.options) ⇒ [<code>OptionsObject</code>](#OptionsObject)
     * [.version](#Logger.version) ⇒ <code>string</code>
     * [.levels](#Logger.levels) ⇒ [<code>LevelsObject</code>](#LevelsObject)
+    * [.setOptions(opts)](#Logger.setOptions)
     * [.log(filename, level, message)](#Logger.log) ⇒ [<code>Logger</code>](#Logger)
     * [.info(info, [filename])](#Logger.info) ↩︎
     * [.debug(debug, [filename])](#Logger.debug) ↩︎
@@ -52,22 +52,9 @@ const Logger = require('@dorianb/logger-js')
     * [.error(error, [filename])](#Logger.error) ↩︎
     * [.fatal(fatal, [filename])](#Logger.fatal) ↩︎
     * [.clear()](#Logger.clear) ⇒ [<code>Logger</code>](#Logger)
+    * [.getLevel(level)](#Logger.getLevel) ⇒ <code>type</code>
     * [.addLevel(newLevel)](#Logger.addLevel) ⇒ <code>int</code>
 
-<a name="Logger.options"></a>
-
-### Logger.options
-<!-- Empty to hide the `**Kind**` tag in documentation -->
-**Setter**: overwrite the logger options  
-
-| Param | Type | Description |
-| --- | --- | --- |
-| opts | [<code>OptionsObject</code>](#OptionsObject) | logger default values |
-
-**Example**  
-```js
-Logger.options = {filename: 'production.log'}
-```
 <a name="Logger.options"></a>
 
 ### Logger.options ⇒ [<code>OptionsObject</code>](#OptionsObject)
@@ -91,10 +78,23 @@ const version = Logger.version
 
 ### Logger.levels ⇒ [<code>LevelsObject</code>](#LevelsObject)
 <!-- Empty to hide the `**Kind**` tag in documentation -->
-**Getter**: Levels getter  
+**Getter**: Levels object getter - All the lovels of the logger  
 **Example**  
 ```js
 const levels = Logger.levels
+```
+<a name="Logger.setOptions"></a>
+
+### Logger.setOptions(opts)
+<!-- Empty to hide the `**Kind**` tag in documentation -->
+
+| Param | Type | Description |
+| --- | --- | --- |
+| opts | [<code>OptionsObject</code>](#OptionsObject) | logger default values |
+
+**Example**  
+```js
+Logger.setOptions({filename: 'production.log'})
 ```
 <a name="Logger.log"></a>
 
@@ -210,6 +210,20 @@ Logger.clear()
 Logger.clear('client.log')
 Logger.clear('client.log', 'connections.log', 'logs.log')
 ```
+<a name="Logger.getLevel"></a>
+
+### Logger.getLevel(level) ⇒ <code>type</code>
+<!-- Empty to hide the `**Kind**` tag in documentation -->
+**Returns**: <code>type</code> - description  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| level | <code>string</code> \| <code>number</code> | description |
+
+**Example**  
+```js
+// ?
+```
 <a name="Logger.addLevel"></a>
 
 ### Logger.addLevel(newLevel) ⇒ <code>int</code>
@@ -230,6 +244,16 @@ const importnantLevel = Logger.addLevel('Important')
 A dictionnary of the logger levels indexed by priority
 
 <!-- Empty to hide the `**Kind**` tag in documentation -->
+**Example**  
+```js
+levels = {
+     0: 'INFO',
+     1: 'DEBUG',
+     2: 'WARNING',
+     3: 'ERROR',
+     4: 'FATAL'
+ }
+```
 <a name="OptionsObject"></a>
 
 ## OptionsObject : <code>Object</code>
@@ -238,10 +262,11 @@ A dictionnary of the logger levels indexed by priority
 
 | Name | Type | Default | Description |
 | --- | --- | --- | --- |
-| [filename] | <code>string</code> | <code>&quot;&#x27;logs.log&#x27;&quot;</code> |  |
-| [folder] | <code>string</code> | <code>&quot;&#x27;./logs/&#x27;&quot;</code> |  |
-| [extension] | <code>string</code> | <code>&quot;&#x27;.log&#x27;&quot;</code> |  |
-| [timezone] | <code>string</code> | <code>&quot;&#x27;Europe/Berlin&#x27;&quot;</code> | A moment timezone --> Full list at: https://momentjs.com/timezone |
+| [filename] | <code>string</code> | <code>&quot;&#x27;logs.log&#x27;&quot;</code> | The name of the default log file |
+| [folder] | <code>string</code> | <code>&quot;&#x27;./logs/&#x27;&quot;</code> | The folder where logs files will be located |
+| [extension] | <code>string</code> | <code>&quot;&#x27;.log&#x27;&quot;</code> | The extension to use for logs files |
+| [timezone] | <code>string</code> | <code>&quot;&#x27;Europe/Berlin&#x27;&quot;</code> | The `moment` timezone for the date | Full list available at: https://momentjs.com/timezone |
+| [console_logs] | <code>boolean</code> | <code>false</code> | Use console.log to displays logs instead of writting it in a log file |
 | [displayLevel] | <code>string</code> \| <code>number</code> | <code>0</code> | The level below a log is not displayed |
 
 

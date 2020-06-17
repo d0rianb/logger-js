@@ -13,12 +13,11 @@ const Logger = require('../lib/main.js')
 // Logger.info('test de défaut dans Newlog.log')
 // Logger.clear()
 // Logger.options = { displayLevel: 3 }
+const start = Date.now()
+// Logger.addLevel('ULTIMATE')
 
-Logger
-    .addLevel('ULTIMATE')
-    .addLevel('ULTIMATE2')
-    .addLevel('ULTIMATE3')
-    .info('test info')
-    .warn('test warn')
-    .error('test error')
-    .fatal('test fatal')
+for (let i = 0; i < 1000; i++) {
+    Logger.info(`test n°${i}`)
+}
+
+console.log(`${Date.now() - start} ms`) // 75ms --> 10ms
