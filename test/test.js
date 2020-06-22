@@ -1,5 +1,7 @@
 const Logger = require('../lib/main.js')
 
 
-Logger.info('test info')
-Logger.clear('all')
+Logger.setOptions({ filename: 'test.log' })
+Logger.info('test info', 'test.log')
+Logger.warn('test info')
+// Logger.clear('all')

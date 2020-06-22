@@ -5,6 +5,11 @@
 
 `logger-js` is a npm logger library for NodeJS
 
+This logger is primarly designed for a backend usage, to handle the logs of a node server. It's lighter and easier to use than other libraries and does not require any configuration (at least for a small/medium project).
+
+This project is part of the [vener.fr](http://www.vener.fr) project, to collect the errors and different information of the server ([express](https://www.expressjs.com)).
+
+
 ## Installation
 To install the package, just run :
 ```bash
@@ -14,6 +19,12 @@ npm install --save @dorianb/logger-js
 Then in the `.js` file :
 ```js
 const Logger = require('@dorianb/logger-js')
+
+Logger.info('Server is starting on port 9000')
+Logger.debug('172 clients are currently connected')
+Logger.warn('Unsafe call from client @7655671')
+Logger.error('Socket &757@127.0.0.1 doesn\'t exist')
+Logger.fatal('Internet connection lost')
 ```
 
 ## Documentation
@@ -52,8 +63,8 @@ const Logger = require('@dorianb/logger-js')
     * [.error(error, [filename])](#Logger.error) ↩︎
     * [.fatal(fatal, [filename])](#Logger.fatal) ↩︎
     * [.clear()](#Logger.clear) ⇒ [<code>Logger</code>](#Logger)
-    * [.getLevel(level)](#Logger.getLevel) ⇒ <code>type</code>
-    * [.addLevel(newLevel)](#Logger.addLevel) ⇒ <code>int</code>
+    * [.getLevel(level)](#Logger.getLevel) ⇒ <code>array</code>
+    * [.addLevel(newLevel)](#Logger.addLevel) ⇒ <code>array</code>
 
 <a name="Logger.options"></a>
 
@@ -192,7 +203,7 @@ Logger.error(`Connection to 127.0.0.1:2000 refused`, 'logs.log')
 **Example**  
 ```js
 Logger.fatal(`Division by zero`)
-Logger.fatal(`Division by zero`, 'logs.log')
+Logger.fatal(`Division by zero`, 'big_errors.log')
 ```
 <a name="Logger.clear"></a>
 
@@ -200,35 +211,37 @@ Logger.fatal(`Division by zero`, 'logs.log')
 <!-- Empty to hide the `**Kind**` tag in documentation -->
 **Chainable**  
 
-| Param | Type |
-| --- | --- |
-| [options.filename] | <code>string</code> | 
+| Param | Type | Description |
+| --- | --- | --- |
+| [options.filename] | <code>string</code> | The filename of the file to clear or 'all' if all the file should be cleaned |
 
 **Example**  
 ```js
-Logger.clear()
+Logger.clear() // clear the default file (options.filename)
 Logger.clear('client.log')
 Logger.clear('client.log', 'connections.log', 'logs.log')
+Logger.clear('all')
 ```
 <a name="Logger.getLevel"></a>
 
-### Logger.getLevel(level) ⇒ <code>type</code>
+### Logger.getLevel(level) ⇒ <code>array</code>
 <!-- Empty to hide the `**Kind**` tag in documentation -->
-**Returns**: <code>type</code> - description  
+**Returns**: <code>array</code> - [index, label]  
 
 | Param | Type | Description |
 | --- | --- | --- |
-| level | <code>string</code> \| <code>number</code> | description |
+| level | <code>string</code> \| <code>number</code> | the index or the label of the level |
 
 **Example**  
 ```js
-// ?
+const testLevel = Logger.getLevel('warn') // --> ["2", "WARN"]
+const testLevel = Logger.getLevel(2)      // --> ["2", "WARN"]
 ```
 <a name="Logger.addLevel"></a>
 
-### Logger.addLevel(newLevel) ⇒ <code>int</code>
+### Logger.addLevel(newLevel) ⇒ <code>array</code>
 <!-- Empty to hide the `**Kind**` tag in documentation -->
-**Returns**: <code>int</code> - the level number  
+**Returns**: <code>array</code> - the level array : [index, label]  
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -236,7 +249,8 @@ Logger.clear('client.log', 'connections.log', 'logs.log')
 
 **Example**  
 ```js
-const importnantLevel = Logger.addLevel('Important')
+const [importantLevel, importantLabel] = Logger.addLevel('Important')
+Logger.log('logs.log', importantLabel, 'Important message which will be display on top of all other leverls')
 ```
 <a name="LevelsObject"></a>
 
@@ -263,8 +277,9 @@ levels = {
 | Name | Type | Default | Description |
 | --- | --- | --- | --- |
 | [filename] | <code>string</code> | <code>&quot;&#x27;logs.log&#x27;&quot;</code> | The name of the default log file |
-| [folder] | <code>string</code> | <code>&quot;&#x27;./logs/&#x27;&quot;</code> | The folder where logs files will be located |
+| [folder] | <code>string</code> | <code>&quot;&#x27;./logs/&#x27;&quot;</code> | The folder where logs files will be located (sorry for the name, couldn't find more descriptive) |
 | [extension] | <code>string</code> | <code>&quot;&#x27;.log&#x27;&quot;</code> | The extension to use for logs files |
+| [useMoment] | <code>boolean</code> | <code>false</code> | Use momentjs to format the dates. Allow timezone options but has a performance cost |
 | [timezone] | <code>string</code> | <code>&quot;&#x27;Europe/Berlin&#x27;&quot;</code> | The `moment` timezone for the date | Full list available at: https://momentjs.com/timezone |
 | [console_logs] | <code>boolean</code> | <code>false</code> | Use console.log to displays logs instead of writting it in a log file |
 | [displayLevel] | <code>string</code> \| <code>number</code> | <code>0</code> | The level below a log is not displayed |
@@ -272,4 +287,4 @@ levels = {
 
 * * *
 
-2020 &copy; Dorian
+2020 &copy; Dorian Beauchesne

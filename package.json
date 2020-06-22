@@ -6,7 +6,8 @@
     "scripts": {
         "test": "jest --runInBand",
         "dev": "nodemon lib/main.js",
-        "docs": "node_modules/.bin/jsdoc2md  --no-cache --partial docs/scope.hbs -t docs/README.hbs lib/*.js > README.md"
+        "docs": "node_modules/.bin/jsdoc2md  --no-cache --partial docs/scope.hbs -t docs/README.hbs lib/*.js > README.md",
+        "publish": "npm run docs && npm publish"
     },
     "jest": {
         "verbose": true,
@@ -31,12 +32,12 @@
     "homepage": "https://github.com/d0rianb/logger-lib#readme",
     "devDependencies": {
         "chai": "^4.2.0",
+        "chai-fs": "^2.0.0",
         "jest": "^26.0.1",
         "jsdoc-to-markdown": "^6.0.1",
         "nodemon": "^2.0.4"
     },
     "dependencies": {
-        "chai-fs": "^2.0.0",
         "moment-timezone": "^0.5.31",
         "pkg-dir": "^4.2.0"
     }
