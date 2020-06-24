@@ -56,13 +56,13 @@ Logger.fatal('Internet connection lost')
     * [.version](#Logger.version) ⇒ <code>string</code>
     * [.levels](#Logger.levels) ⇒ [<code>LevelsObject</code>](#LevelsObject)
     * [.setOptions(opts)](#Logger.setOptions)
-    * [.log(filename, level, message)](#Logger.log) ⇒ [<code>Logger</code>](#Logger)
+    * [.log(filename, level, message)](#Logger.log) ↩︎
     * [.info(info, [filename])](#Logger.info) ↩︎
     * [.debug(debug, [filename])](#Logger.debug) ↩︎
     * [.warn(warn, [filename])](#Logger.warn) ↩︎
     * [.error(error, [filename])](#Logger.error) ↩︎
     * [.fatal(fatal, [filename])](#Logger.fatal) ↩︎
-    * [.clear()](#Logger.clear) ⇒ [<code>Logger</code>](#Logger)
+    * [.clear()](#Logger.clear) ↩︎
     * [.getLevel(level)](#Logger.getLevel) ⇒ <code>array</code>
     * [.addLevel(newLevel)](#Logger.addLevel) ⇒ <code>array</code>
 
@@ -109,10 +109,9 @@ Logger.setOptions({filename: 'production.log'})
 ```
 <a name="Logger.log"></a>
 
-### Logger.log(filename, level, message) ⇒ [<code>Logger</code>](#Logger)
+### Logger.log(filename, level, message) ↩︎
 <!-- Empty to hide the `**Kind**` tag in documentation -->
 **Chainable**  
-**Returns**: [<code>Logger</code>](#Logger) - Return the logger to chain methods  
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -123,6 +122,7 @@ Logger.setOptions({filename: 'production.log'})
 **Example**  
 ```js
 Logger.log('network.log', 'WARN', 'Socket disconnected')
+Logger.log('network.log', 2, 'Socket disconnected')
 // --> [10-06-2020 06:43:51] - WARN - Socket disconnected
 ```
 <a name="Logger.info"></a>
@@ -207,13 +207,13 @@ Logger.fatal(`Division by zero`, 'big_errors.log')
 ```
 <a name="Logger.clear"></a>
 
-### Logger.clear() ⇒ [<code>Logger</code>](#Logger)
+### Logger.clear() ↩︎
 <!-- Empty to hide the `**Kind**` tag in documentation -->
 **Chainable**  
 
 | Param | Type | Description |
 | --- | --- | --- |
-| [options.filename] | <code>string</code> | The filename of the file to clear or 'all' if all the file should be cleaned |
+| [options.filename] | <code>string</code> | The filename of the file to clear or 'all' if all the files should be cleaned |
 
 **Example**  
 ```js
@@ -250,7 +250,7 @@ const testLevel = Logger.getLevel(2)      // --> ["2", "WARN"]
 **Example**  
 ```js
 const [importantLevel, importantLabel] = Logger.addLevel('Important')
-Logger.log('logs.log', importantLabel, 'Important message which will be display on top of all other leverls')
+Logger.log('logs.log', importantLevel, 'Important message which will be display on top of all other levels')
 ```
 <a name="LevelsObject"></a>
 
