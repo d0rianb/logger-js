@@ -5,7 +5,7 @@ const logsDir = './logs'
 const defaultFile = `logs.log`
 
 describe('Logs method in default file', () => {
-    // afterEach(() => Logger.clear())
+    afterEach(() => Logger.clear())
 
     it('Should info in default file', () => {
         const log = 'test info in default file'
