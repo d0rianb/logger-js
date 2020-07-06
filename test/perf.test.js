@@ -2,7 +2,8 @@ const Logger = require('../lib/main.js')
 
 const n = 10000
 
-// 10000 - 461 ms - 0.5.6
+// 461 ms - 0.5.6
+// 430 ms - 0.5.7
 
 describe('Performance test', () => {
     it(`Time to run ${n} logs`, () => {
