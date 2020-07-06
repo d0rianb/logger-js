@@ -12,7 +12,11 @@
     "jest": {
         "verbose": true,
         "testRegex": "./test/.*.js$",
-        "rootDir": "."
+        "rootDir": ".",
+        "testPathIgnorePatterns": [
+            "/node_modules/",
+            "test/test.js"
+        ]
     },
     "repository": {
         "type": "git",
@@ -31,8 +35,6 @@
     },
     "homepage": "https://github.com/d0rianb/logger-lib#readme",
     "devDependencies": {
-        "chai": "^4.2.0",
-        "chai-fs": "^2.0.0",
         "jest": "^26.0.1",
         "jsdoc-to-markdown": "^6.0.1",
         "nodemon": "^2.0.4"

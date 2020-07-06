@@ -5,7 +5,7 @@
 
 `logger-js` is a npm logger library for NodeJS
 
-This logger is primarly designed for a backend usage, to handle the logs of a node server. It's lighter and easier to use than other libraries and does not require any configuration (at least for a small/medium project).
+This logger is primarly designed for a backend usage, to handle the logs of a node server, or for a bot. It's lighter and easier to use than other libraries and does not require any configuration (at least for a small/medium project). It's particulary fast and require almost no running time.
 
 This project is part of the [vener.fr](http://www.vener.fr) project, to collect the errors and different information of the server ([express](https://www.expressjs.com)).
 

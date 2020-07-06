@@ -45,18 +45,20 @@ describe('Logs method in default file', () => {
 })
 
 describe('Options modification', () => {
+    beforeAll(() => Logger.clear('all'))
     afterEach(() => Logger.clear('test.log'))
-    it('Should log INFO in test.log via call', () => {
-        Logger.info('INFO', 'test.log')
+
+    it(`Should log 'Information' in test.log via call`, () => {
+        Logger.info('Information', 'test.log')
         const content = fs.readFileSync(`${logsDir}/test.log`, { encoding: 'utf8' })
-        expect(content).toContain('INFO')
+        expect(content).toContain('Information')
     })
 
-    it('Should log INFO in test.log via options', () => {
+    it(`Should log 'Information' in test.log via options`, () => {
         Logger.setOptions({ filename: 'test.log' })
-        Logger.info('INFO')
+        Logger.info('Information')
         const content = fs.readFileSync(`${logsDir}/test.log`, { encoding: 'utf8' })
-        expect(content).toContain('INFO')
+        expect(content).toContain('Information')
     })
 })
 
