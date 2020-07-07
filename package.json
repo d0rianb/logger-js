@@ -1,13 +1,14 @@
 {
     "name": "@dorianb/logger-js",
-    "version": "0.5.7",
+    "version": "0.5.8",
     "description": "A simple logger library for JS and NodeJS",
     "main": "lib/main.js",
     "scripts": {
         "test": "jest --runInBand",
         "dev": "nodemon lib/main.js",
+        "perf": "jest -t 'Performance test'",
         "docs": "node_modules/.bin/jsdoc2md  --no-cache --partial docs/scope.hbs -t docs/README.hbs lib/*.js > README.md",
-        "publish": "npm run docs && PACKAGE_VERSION=$(cat package.json | grep version | head -1 | awk -F: '{ print $2 }' | sed 's/[\",]//g' | tr -d '[[:space:]]') && git commit . -m \"publish $PACKAGE_VERSION to npm\" && git tag $PACKAGE_VERSION && npm publish && git push"
+        "publish": "npm run docs && PACKAGE_VERSION=$(cat package.json | grep version | head -1 | awk -F: '{ print $2 }' | sed 's/[\",]//g' | tr -d '[[:space:]]') && git commit . -m \"publish $PACKAGE_VERSION to npm\" && git tag $PACKAGE_VERSION && git push && npm publish"
     },
     "jest": {
         "verbose": true,
