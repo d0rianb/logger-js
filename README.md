@@ -36,6 +36,14 @@ Logger.fatal('Internet connection lost')
 <dd></dd>
 </dl>
 
+## Members
+
+<dl>
+<dt><a href="#trustedFiles">trustedFiles</a></dt>
+<dd><p>Filename known by the logger, to avoid path resolving the name and checking the extension each time</p>
+</dd>
+</dl>
+
 ## Typedefs
 
 <dl>
@@ -252,6 +260,12 @@ const testLevel = Logger.getLevel(2)      // --> ["2", "WARN"]
 const [importantLevel, importantLabel] = Logger.addLevel('Important')
 Logger.log('logs.log', importantLevel, 'Important message which will be display on top of all other levels')
 ```
+<a name="trustedFiles"></a>
+
+## trustedFiles
+Filename known by the logger, to avoid path resolving the name and checking the extension each time
+
+<!-- Empty to hide the `**Kind**` tag in documentation -->
 <a name="LevelsObject"></a>
 
 ## LevelsObject : <code>Object</code>
@@ -283,6 +297,8 @@ levels = {
 | [timezone] | <code>string</code> | <code>&quot;&#x27;Europe/Berlin&#x27;&quot;</code> | The `moment` timezone for the date | Full list available at: https://momentjs.com/timezone |
 | [console_logs] | <code>boolean</code> | <code>false</code> | Use console.log to displays logs instead of writting it in a log file |
 | [displayLevel] | <code>string</code> \| <code>number</code> | <code>0</code> | The level below a log is not displayed |
+| [showPID] | <code>boolean</code> | <code>false</code> | Display the PID of the process in the log |
+| [showHostname] | <code>boolean</code> | <code>false</code> | Display the hostname in the log |
 
 
 * * *
