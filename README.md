@@ -36,14 +36,6 @@ Logger.fatal('Internet connection lost')
 <dd></dd>
 </dl>
 
-## Members
-
-<dl>
-<dt><a href="#trustedFiles">trustedFiles</a></dt>
-<dd><p>Filename known by the logger, to avoid path resolving the name and checking the extension each time</p>
-</dd>
-</dl>
-
 ## Typedefs
 
 <dl>
@@ -260,12 +252,6 @@ const testLevel = Logger.getLevel(2)      // --> ["2", "WARN"]
 const [importantLevel, importantLabel] = Logger.addLevel('Important')
 Logger.log('logs.log', importantLevel, 'Important message which will be display on top of all other levels')
 ```
-<a name="trustedFiles"></a>
-
-## trustedFiles
-Filename known by the logger, to avoid path resolving the name and checking the extension each time
-
-<!-- Empty to hide the `**Kind**` tag in documentation -->
 <a name="LevelsObject"></a>
 
 ## LevelsObject : <code>Object</code>
