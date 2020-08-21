@@ -4,7 +4,9 @@ const n = 10000
 
 // 461 ms - 0.5.6 - with momentjs
 // 163 ms - 0.5.7 - without momentjs
-// 58 ms  - 0.5.8 - without momentjs
+// 58 ms  - 0.5.8
+// 56 ms  - 0.5.9
+// 60 ms  - 0.6.0
 
 describe('Performance test', () => {
     it(`Time to run ${n} logs`, () => {

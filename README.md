@@ -7,6 +7,8 @@
 
 This logger is primarly designed for a backend usage, to handle the logs of a node server, or for a bot. It's lighter and easier to use than other libraries and does not require any configuration (at least for a small/medium project). It's particulary fast and require almost no running time.
 
+The logger will write the logs by default in the `logs/` directory to the root of your project. You can change the location and the name of this folder. The default log file is `logs.log`.
+
 This project is part of the [vener.fr](http://www.vener.fr) project, to collect the errors and different information of the server ([express](https://www.expressjs.com)).
 
 
@@ -65,6 +67,7 @@ Logger.fatal('Internet connection lost')
     * [.clear()](#Logger.clear) ↩︎
     * [.getLevel(level)](#Logger.getLevel) ⇒ <code>array</code>
     * [.addLevel(newLevel)](#Logger.addLevel) ⇒ <code>array</code>
+    * [.on(event, callback)](#Logger.on)
 
 <a name="Logger.options"></a>
 
@@ -252,6 +255,16 @@ const testLevel = Logger.getLevel(2)      // --> ["2", "WARN"]
 const [importantLevel, importantLabel] = Logger.addLevel('Important')
 Logger.log('logs.log', importantLevel, 'Important message which will be display on top of all other levels')
 ```
+<a name="Logger.on"></a>
+
+### Logger.on(event, callback)
+<!-- Empty to hide the `**Kind**` tag in documentation -->
+
+| Param | Type | Description |
+| --- | --- | --- |
+| event | <code>string</code> | 'log' | 'error' |
+| callback | <code>function</code> |  |
+
 <a name="LevelsObject"></a>
 
 ## LevelsObject : <code>Object</code>
