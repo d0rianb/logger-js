@@ -265,6 +265,11 @@ Logger.log('logs.log', importantLevel, 'Important message which will be display 
 | event | <code>string</code> | 'log' | 'error' |
 | callback | <code>function</code> |  |
 
+**Example**  
+```js
+Logger.on('log', log => console.log(log))
+Logger.on('error', handleErrorsFunction)
+```
 <a name="LevelsObject"></a>
 
 ## LevelsObject : <code>Object</code>
