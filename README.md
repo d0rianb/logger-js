@@ -78,6 +78,7 @@ Logger.fatal('Internet connection lost')
 ```js
 const loggerOptions = Logger.options
 ```
+<br />
 <a name="Logger.version"></a>
 
 ### Logger.version ⇒ <code>string</code>
@@ -88,6 +89,7 @@ const loggerOptions = Logger.options
 ```js
 const version = Logger.version
 ```
+<br />
 <a name="Logger.levels"></a>
 
 ### Logger.levels ⇒ [<code>LevelsObject</code>](#LevelsObject)
@@ -97,6 +99,7 @@ const version = Logger.version
 ```js
 const levels = Logger.levels
 ```
+<br />
 <a name="Logger.setOptions"></a>
 
 ### Logger.setOptions(opts)
@@ -110,6 +113,7 @@ const levels = Logger.levels
 ```js
 Logger.setOptions({filename: 'production.log'})
 ```
+<br />
 <a name="Logger.log"></a>
 
 ### Logger.log(filename, level, message) ↩︎
@@ -128,6 +132,7 @@ Logger.log('network.log', 'WARN', 'Socket disconnected')
 Logger.log('network.log', 2, 'Socket disconnected')
 // --> [10-06-2020 06:43:51] - WARN - Socket disconnected
 ```
+<br />
 <a name="Logger.info"></a>
 
 ### Logger.info(info, [filename]) ↩︎
@@ -144,6 +149,7 @@ Logger.log('network.log', 2, 'Socket disconnected')
 Logger.info('Server has started')
 Logger.info('Server has started', 'server.log')
 ```
+<br />
 <a name="Logger.debug"></a>
 
 ### Logger.debug(debug, [filename]) ↩︎
@@ -160,6 +166,7 @@ Logger.info('Server has started', 'server.log')
 Logger.debug(`Client ID = ${clientID}`)
 Logger.debug(`Client ID = ${clientID}`, 'clients.log')
 ```
+<br />
 <a name="Logger.warn"></a>
 
 ### Logger.warn(warn, [filename]) ↩︎
@@ -176,6 +183,7 @@ Logger.debug(`Client ID = ${clientID}`, 'clients.log')
 Logger.warn(`Database disconnected`)
 Logger.warn(`Database disconnected`, 'connections.log')
 ```
+<br />
 <a name="Logger.error"></a>
 
 ### Logger.error(error, [filename]) ↩︎
@@ -192,6 +200,7 @@ Logger.warn(`Database disconnected`, 'connections.log')
 Logger.error(`Connection to 127.0.0.1:2000 refused`)
 Logger.error(`Connection to 127.0.0.1:2000 refused`, 'logs.log')
 ```
+<br />
 <a name="Logger.fatal"></a>
 
 ### Logger.fatal(fatal, [filename]) ↩︎
@@ -208,6 +217,7 @@ Logger.error(`Connection to 127.0.0.1:2000 refused`, 'logs.log')
 Logger.fatal(`Division by zero`)
 Logger.fatal(`Division by zero`, 'big_errors.log')
 ```
+<br />
 <a name="Logger.clear"></a>
 
 ### Logger.clear() ↩︎
@@ -225,6 +235,7 @@ Logger.clear('client.log')
 Logger.clear('client.log', 'connections.log', 'logs.log')
 Logger.clear('all')
 ```
+<br />
 <a name="Logger.getLevel"></a>
 
 ### Logger.getLevel(level) ⇒ <code>array</code>
@@ -240,6 +251,7 @@ Logger.clear('all')
 const testLevel = Logger.getLevel('warn') // --> ["2", "WARN"]
 const testLevel = Logger.getLevel(2)      // --> ["2", "WARN"]
 ```
+<br />
 <a name="Logger.addLevel"></a>
 
 ### Logger.addLevel(newLevel) ⇒ <code>array</code>
@@ -255,6 +267,7 @@ const testLevel = Logger.getLevel(2)      // --> ["2", "WARN"]
 const [importantLevel, importantLabel] = Logger.addLevel('Important')
 Logger.log('logs.log', importantLevel, 'Important message which will be display on top of all other levels')
 ```
+<br />
 <a name="Logger.on"></a>
 
 ### Logger.on(event, callback)
@@ -270,6 +283,8 @@ Logger.log('logs.log', importantLevel, 'Important message which will be display 
 Logger.on('log', log => console.log(log))
 Logger.on('error', handleErrorsFunction)
 ```
+<br />
+<br />
 <a name="LevelsObject"></a>
 
 ## LevelsObject : <code>Object</code>
@@ -286,6 +301,7 @@ levels = {
      4: 'FATAL'
  }
 ```
+<br />
 <a name="OptionsObject"></a>
 
 ## OptionsObject : <code>Object</code>
@@ -304,6 +320,7 @@ levels = {
 | [showPID] | <code>boolean</code> | <code>false</code> | Display the PID of the process in the log |
 | [showHostname] | <code>boolean</code> | <code>false</code> | Display the hostname in the log |
 
+<br />
 
 * * *
 
