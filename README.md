@@ -31,14 +31,14 @@ Logger.fatal('Internet connection lost')
 
 ## Documentation
 
-## Classes
+### Classes
 
 <dl>
 <dt><a href="#Logger">Logger</a></dt>
 <dd></dd>
 </dl>
 
-## Typedefs
+### Typedefs
 
 <dl>
 <dt><a href="#LevelsObject">LevelsObject</a> : <code>Object</code></dt>
@@ -50,7 +50,7 @@ Logger.fatal('Internet connection lost')
 
 <a name="Logger"></a>
 
-## Logger
+### Logger
 <!-- Empty to hide the `**Kind**` tag in documentation -->
 
 * [Logger](#Logger)
@@ -71,7 +71,7 @@ Logger.fatal('Internet connection lost')
 
 <a name="Logger.options"></a>
 
-### Logger.options ⇒ [<code>OptionsObject</code>](#OptionsObject)
+#### Logger.options ⇒ [<code>OptionsObject</code>](#OptionsObject)
 <!-- Empty to hide the `**Kind**` tag in documentation -->
 **Getter**: Return the options of the logger  
 **Example**  
@@ -81,7 +81,7 @@ const loggerOptions = Logger.options
 <br />
 <a name="Logger.version"></a>
 
-### Logger.version ⇒ <code>string</code>
+#### Logger.version ⇒ <code>string</code>
 <!-- Empty to hide the `**Kind**` tag in documentation -->
 **Returns**: <code>string</code> - the version number of the logger  
 **Getter**: Version getter  
@@ -92,7 +92,7 @@ const version = Logger.version
 <br />
 <a name="Logger.levels"></a>
 
-### Logger.levels ⇒ [<code>LevelsObject</code>](#LevelsObject)
+#### Logger.levels ⇒ [<code>LevelsObject</code>](#LevelsObject)
 <!-- Empty to hide the `**Kind**` tag in documentation -->
 **Getter**: Levels object getter - All the lovels of the logger  
 **Example**  
@@ -102,7 +102,7 @@ const levels = Logger.levels
 <br />
 <a name="Logger.setOptions"></a>
 
-### Logger.setOptions(opts)
+#### Logger.setOptions(opts)
 <!-- Empty to hide the `**Kind**` tag in documentation -->
 
 | Param | Type | Description |
@@ -116,7 +116,7 @@ Logger.setOptions({filename: 'production.log'})
 <br />
 <a name="Logger.log"></a>
 
-### Logger.log(filename, level, message) ↩︎
+#### Logger.log(filename, level, message) ↩︎
 <!-- Empty to hide the `**Kind**` tag in documentation -->
 **Chainable**  
 
@@ -135,7 +135,7 @@ Logger.log('network.log', 2, 'Socket disconnected')
 <br />
 <a name="Logger.info"></a>
 
-### Logger.info(info, [filename]) ↩︎
+#### Logger.info(info, [filename]) ↩︎
 <!-- Empty to hide the `**Kind**` tag in documentation -->
 **Chainable**  
 
@@ -152,7 +152,7 @@ Logger.info('Server has started', 'server.log')
 <br />
 <a name="Logger.debug"></a>
 
-### Logger.debug(debug, [filename]) ↩︎
+#### Logger.debug(debug, [filename]) ↩︎
 <!-- Empty to hide the `**Kind**` tag in documentation -->
 **Chainable**  
 
@@ -169,7 +169,7 @@ Logger.debug(`Client ID = ${clientID}`, 'clients.log')
 <br />
 <a name="Logger.warn"></a>
 
-### Logger.warn(warn, [filename]) ↩︎
+#### Logger.warn(warn, [filename]) ↩︎
 <!-- Empty to hide the `**Kind**` tag in documentation -->
 **Chainable**  
 
@@ -186,7 +186,7 @@ Logger.warn(`Database disconnected`, 'connections.log')
 <br />
 <a name="Logger.error"></a>
 
-### Logger.error(error, [filename]) ↩︎
+#### Logger.error(error, [filename]) ↩︎
 <!-- Empty to hide the `**Kind**` tag in documentation -->
 **Chainable**  
 
@@ -203,7 +203,7 @@ Logger.error(`Connection to 127.0.0.1:2000 refused`, 'logs.log')
 <br />
 <a name="Logger.fatal"></a>
 
-### Logger.fatal(fatal, [filename]) ↩︎
+#### Logger.fatal(fatal, [filename]) ↩︎
 <!-- Empty to hide the `**Kind**` tag in documentation -->
 **Chainable**  
 
@@ -220,7 +220,7 @@ Logger.fatal(`Division by zero`, 'big_errors.log')
 <br />
 <a name="Logger.clear"></a>
 
-### Logger.clear() ↩︎
+#### Logger.clear() ↩︎
 <!-- Empty to hide the `**Kind**` tag in documentation -->
 **Chainable**  
 
@@ -238,7 +238,7 @@ Logger.clear('all')
 <br />
 <a name="Logger.getLevel"></a>
 
-### Logger.getLevel(level) ⇒ <code>array</code>
+#### Logger.getLevel(level) ⇒ <code>array</code>
 <!-- Empty to hide the `**Kind**` tag in documentation -->
 **Returns**: <code>array</code> - [index, label]  
 
@@ -254,7 +254,7 @@ const testLevel = Logger.getLevel(2)      // --> ["2", "WARN"]
 <br />
 <a name="Logger.addLevel"></a>
 
-### Logger.addLevel(newLevel) ⇒ <code>array</code>
+#### Logger.addLevel(newLevel) ⇒ <code>array</code>
 <!-- Empty to hide the `**Kind**` tag in documentation -->
 **Returns**: <code>array</code> - the level array : [index, label]  
 
@@ -270,7 +270,7 @@ Logger.log('logs.log', importantLevel, 'Important message which will be display 
 <br />
 <a name="Logger.on"></a>
 
-### Logger.on(event, callback)
+#### Logger.on(event, callback)
 <!-- Empty to hide the `**Kind**` tag in documentation -->
 
 | Param | Type | Description |
@@ -287,7 +287,7 @@ Logger.on('error', handleErrorsFunction)
 <br />
 <a name="LevelsObject"></a>
 
-## LevelsObject : <code>Object</code>
+### LevelsObject : <code>Object</code>
 A dictionnary of the logger levels indexed by priority
 
 <!-- Empty to hide the `**Kind**` tag in documentation -->
@@ -304,7 +304,7 @@ levels = {
 <br />
 <a name="OptionsObject"></a>
 
-## OptionsObject : <code>Object</code>
+### OptionsObject : <code>Object</code>
 <!-- Empty to hide the `**Kind**` tag in documentation -->
 **Properties**
 
