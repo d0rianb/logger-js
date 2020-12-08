@@ -1,4 +1,4 @@
 const process = require('process')
 const Logger = require('../lib/main.js')
 
-Logger.info('test2')
+Logger.getFileContent('logs.log')
