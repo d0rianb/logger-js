@@ -62,7 +62,7 @@ Logger.fatal('Internet connection lost')
     * [.info(info, [filename])](#Logger.info) ↩︎
     * [.debug(debug, [filename])](#Logger.debug) ↩︎
     * [.warn(warn, [filename])](#Logger.warn) ↩︎
-    * [.error(error, [filename])](#Logger.error) ↩︎
+    * [.error(error, [filename], [opts])](#Logger.error) ↩︎
     * [.fatal(fatal, [filename])](#Logger.fatal) ↩︎
     * [.clear()](#Logger.clear) ↩︎
     * [.getLevel(level)](#Logger.getLevel) ⇒ <code>array</code>
@@ -186,7 +186,7 @@ Logger.warn(`Database disconnected`, 'connections.log')
 <br />
 <a name="Logger.error"></a>
 
-#### Logger.error(error, [filename]) ↩︎
+#### Logger.error(error, [filename], [opts]) ↩︎
 <!-- Empty to hide the `**Kind**` tag in documentation -->
 **Chainable**  
 
@@ -194,6 +194,7 @@ Logger.warn(`Database disconnected`, 'connections.log')
 | --- | --- | --- | --- |
 | error | <code>string</code> |  | content of the log |
 | [filename] | <code>string</code> | <code>&quot;options.filename&quot;</code> | filename without path |
+| [opts] | <code>object</code> | <code>{}</code> | options |
 
 **Example**  
 ```js
