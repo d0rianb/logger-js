@@ -58,6 +58,7 @@ Logger.fatal('Internet connection lost')
     * [.version](#Logger.version) ⇒ <code>string</code>
     * [.levels](#Logger.levels) ⇒ [<code>LevelsObject</code>](#LevelsObject)
     * [.setOptions(opts)](#Logger.setOptions)
+    * [.alignLevel(level, side)](#Logger.alignLevel) ⇒ <code>string</code>
     * [.log(filename, level, message)](#Logger.log) ↩︎
     * [.info(info, [filename])](#Logger.info) ↩︎
     * [.debug(debug, [filename])](#Logger.debug) ↩︎
@@ -113,6 +114,19 @@ const levels = Logger.levels
 ```js
 Logger.setOptions({filename: 'production.log'})
 ```
+<br />
+<a name="Logger.alignLevel"></a>
+
+#### Logger.alignLevel(level, side) ⇒ <code>string</code>
+Insert a certain amount of whitespace to align the levels
+
+<!-- Empty to hide the `**Kind**` tag in documentation -->
+
+| Param | Type | Description |
+| --- | --- | --- |
+| level | <code>string</code> | The level name |
+| side | <code>string</code> | 'left'|'center'|'right' |
+
 <br />
 <a name="Logger.log"></a>
 
@@ -314,12 +328,13 @@ levels = {
 | [filename] | <code>string</code> | <code>&quot;&#x27;logs.log&#x27;&quot;</code> | The name of the default log file |
 | [folder] | <code>string</code> | <code>&quot;&#x27;./logs/&#x27;&quot;</code> | The folder where logs files will be located (sorry for the name, couldn't find more descriptive) |
 | [extension] | <code>string</code> | <code>&quot;&#x27;.log&#x27;&quot;</code> | The extension to use for logs files |
-| [useMoment] | <code>boolean</code> | <code>false</code> | Use momentjs to format the dates. Allow timezone options but has a performance cost |
+| [useMoment] | <code>boolean</code> | <code>false</code> | Use moment-js to format the dates. Allow timezone options but has a performance cost |
 | [timezone] | <code>string</code> | <code>&quot;&#x27;Europe/Berlin&#x27;&quot;</code> | The `moment` timezone for the date | Full list available at: https://momentjs.com/timezone |
-| [console_logs] | <code>boolean</code> | <code>false</code> | Use console.log to displays logs instead of writting it in a log file |
+| [console_logs] | <code>boolean</code> | <code>false</code> | Use console.log to displays logs instead of writing it in a log file |
 | [displayLevel] | <code>string</code> \| <code>number</code> | <code>0</code> | The level below a log is not displayed |
 | [showPID] | <code>boolean</code> | <code>false</code> | Display the PID of the process in the log |
 | [showHostname] | <code>boolean</code> | <code>false</code> | Display the hostname in the log |
+| [align] | <code>string</code> | <code>&quot;left&quot;</code> | Where should the level be aligned ('left'|'center'|'right') |
 
 <br />
 

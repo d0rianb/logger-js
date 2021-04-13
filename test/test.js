@@ -1,7 +1,9 @@
 const process = require('process')
 const Logger = require('../lib/main.js')
 
+const levels = ['info', 'warn', 'error', 'fatal']
 
-Logger.on('error', err => console.log(err))
-Logger.error('test error')
-Logger.error('test error 2', 'logs.log', { noEvent: true })
+Logger.clear('logs.log')
+
+for (let i = 0; i < 5; i++)
+    levels.forEach(level => Logger[level]('test de level'))
