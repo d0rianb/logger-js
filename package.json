@@ -1,6 +1,6 @@
 {
     "name": "@dorianb/logger-js",
-    "version": "0.7.1",
+    "version": "0.7.3",
     "description": "A simple logger library for JS and NodeJS",
     "main": "lib/main.js",
     "scripts": {

@@ -42,7 +42,7 @@ Logger.fatal('Internet connection lost')
 
 <dl>
 <dt><a href="#LevelsObject">LevelsObject</a> : <code>Object</code></dt>
-<dd><p>A dictionnary of the logger levels indexed by priority</p>
+<dd><p>A dictionary of the logger levels indexed by priority</p>
 </dd>
 <dt><a href="#OptionsObject">OptionsObject</a> : <code>Object</code></dt>
 <dd></dd>
@@ -61,10 +61,10 @@ Logger.fatal('Internet connection lost')
     * [.log(filename, level, message)](#Logger.log) ↩︎
     * [.info(info, [filename])](#Logger.info) ↩︎
     * [.debug(debug, [filename])](#Logger.debug) ↩︎
-    * [.warn(warn, [filename])](#Logger.warn) ↩︎
+    * [.warn(warning, [filename])](#Logger.warn) ↩︎
     * [.error(error, [filename], [opts])](#Logger.error) ↩︎
-    * [.fatal(fatal, [filename])](#Logger.fatal) ↩︎
-    * [.clear()](#Logger.clear) ↩︎
+    * [.fatal(error, [filename])](#Logger.fatal) ↩︎
+    * [.clear([...filename])](#Logger.clear) ↩︎
     * [.getLevel(level)](#Logger.getLevel) ⇒ <code>array</code>
     * [.addLevel(newLevel)](#Logger.addLevel) ⇒ <code>array</code>
     * [.on(event, callback)](#Logger.on)
@@ -94,7 +94,7 @@ const version = Logger.version
 
 #### Logger.levels ⇒ [<code>LevelsObject</code>](#LevelsObject)
 <!-- Empty to hide the `**Kind**` tag in documentation -->
-**Getter**: Levels object getter - All the lovels of the logger  
+**Getter**: Levels object getter - All the levels of the logger  
 **Example**  
 ```js
 const levels = Logger.levels
@@ -169,13 +169,13 @@ Logger.debug(`Client ID = ${clientID}`, 'clients.log')
 <br />
 <a name="Logger.warn"></a>
 
-#### Logger.warn(warn, [filename]) ↩︎
+#### Logger.warn(warning, [filename]) ↩︎
 <!-- Empty to hide the `**Kind**` tag in documentation -->
 **Chainable**  
 
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
-| warn | <code>string</code> |  | content of the log |
+| warning | <code>string</code> |  | content of the log |
 | [filename] | <code>string</code> | <code>&quot;options.filename&quot;</code> | filename without path |
 
 **Example**  
@@ -204,13 +204,13 @@ Logger.error(`Connection to 127.0.0.1:2000 refused`, 'logs.log')
 <br />
 <a name="Logger.fatal"></a>
 
-#### Logger.fatal(fatal, [filename]) ↩︎
+#### Logger.fatal(error, [filename]) ↩︎
 <!-- Empty to hide the `**Kind**` tag in documentation -->
 **Chainable**  
 
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
-| fatal | <code>string</code> |  | content of the log |
+| error | <code>string</code> |  | content of the log |
 | [filename] | <code>string</code> | <code>&quot;options.filename&quot;</code> | filename without path |
 
 **Example**  
@@ -221,13 +221,13 @@ Logger.fatal(`Division by zero`, 'big_errors.log')
 <br />
 <a name="Logger.clear"></a>
 
-#### Logger.clear() ↩︎
+#### Logger.clear([...filename]) ↩︎
 <!-- Empty to hide the `**Kind**` tag in documentation -->
 **Chainable**  
 
-| Param | Type | Description |
-| --- | --- | --- |
-| [options.filename] | <code>string</code> | The filename of the file to clear or 'all' if all the files should be cleaned |
+| Param | Type | Default | Description |
+| --- | --- | --- | --- |
+| [...filename] | <code>string</code> | <code>&quot;options.filename&quot;</code> | The filenames of the files to clear or 'all' if all the files should be cleaned |
 
 **Example**  
 ```js
@@ -289,7 +289,7 @@ Logger.on('error', handleErrorsFunction)
 <a name="LevelsObject"></a>
 
 ### LevelsObject : <code>Object</code>
-A dictionnary of the logger levels indexed by priority
+A dictionary of the logger levels indexed by priority
 
 <!-- Empty to hide the `**Kind**` tag in documentation -->
 **Example**  
