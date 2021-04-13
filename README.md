@@ -58,7 +58,6 @@ Logger.fatal('Internet connection lost')
     * [.version](#Logger.version) ⇒ <code>string</code>
     * [.levels](#Logger.levels) ⇒ [<code>LevelsObject</code>](#LevelsObject)
     * [.setOptions(opts)](#Logger.setOptions)
-    * [.alignLevel(level, side)](#Logger.alignLevel) ⇒ <code>string</code>
     * [.log(filename, level, message)](#Logger.log) ↩︎
     * [.info(info, [filename])](#Logger.info) ↩︎
     * [.debug(debug, [filename])](#Logger.debug) ↩︎
@@ -114,19 +113,6 @@ const levels = Logger.levels
 ```js
 Logger.setOptions({filename: 'production.log'})
 ```
-<br />
-<a name="Logger.alignLevel"></a>
-
-#### Logger.alignLevel(level, side) ⇒ <code>string</code>
-Insert a certain amount of whitespace to align the levels
-
-<!-- Empty to hide the `**Kind**` tag in documentation -->
-
-| Param | Type | Description |
-| --- | --- | --- |
-| level | <code>string</code> | The level name |
-| side | <code>string</code> | 'left'|'center'|'right' |
-
 <br />
 <a name="Logger.log"></a>
 
