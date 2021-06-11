@@ -1,14 +1,15 @@
 {
     "name": "@dorianb/logger-js",
-    "version": "0.7.3",
+    "version": "0.7.4",
     "description": "A simple logger library for JS and NodeJS",
-    "main": "lib/main.js",
+    "main": "dist/main.js",
     "scripts": {
         "test": "jest --runInBand",
         "dev": "nodemon lib/main.js",
         "perf": "jest -t 'Performance test'",
+        "build": "npx terser --compress --mangle -- lib/main.js > dist/main.min.js",
         "docs": "node_modules/.bin/jsdoc2md --no-cache --heading-depth=3 --partial docs/*.hbs -t docs/README.hbs lib/*.js > README.md ",
-        "publish": "npm run docs && npx auto-version && git commit . -m \"publish $PACKAGE_VERSION to npm\" && git tag $PACKAGE_VERSION && git push && npm publish"
+        "publish-to-npm": "npm run docs && npx auto-version && git commit . -m \"publish $PACKAGE_VERSION to npm\" && git tag $PACKAGE_VERSION && git push && npm publish"
     },
     "jest": {
         "verbose": true,
@@ -39,7 +40,8 @@
         "auto-version-js": "^0.3.0",
         "jest": "^26.0.1",
         "jsdoc-to-markdown": "^6.0.1",
-        "nodemon": "^2.0.4"
+        "nodemon": "^2.0.4",
+        "terser": "^5.7.0"
     },
     "dependencies": {
         "moment-timezone": "^0.5.31",
