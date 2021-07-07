@@ -2,7 +2,7 @@
     "name": "@dorianb/logger-js",
     "version": "0.7.4",
     "description": "A simple logger library for JS and NodeJS",
-    "main": "dist/main.js",
+    "main": "dist/main.min.js",
     "scripts": {
         "test": "jest --runInBand",
         "dev": "nodemon lib/main.js",
